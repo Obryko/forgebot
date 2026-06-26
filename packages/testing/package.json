@@ -1,0 +1,5 @@
+{
+  "name": "@forgebot/testing",
+  "module": "index.ts",
+  "type": "module"
+}
