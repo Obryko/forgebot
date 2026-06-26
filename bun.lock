@@ -6,17 +6,50 @@
       "name": "forgebot",
       "devDependencies": {
         "@types/bun": "latest",
-      },
-      "peerDependencies": {
         "typescript": "^6.0.3",
       },
+    },
+    "apps/worker": {
+      "name": "@forgebot/worker",
+    },
+    "packages/config": {
+      "name": "@forgebot/config",
+    },
+    "packages/core": {
+      "name": "@forgebot/core",
+    },
+    "packages/github": {
+      "name": "@forgebot/github",
     },
     "packages/logger": {
       "name": "@forgebot/logger",
     },
+    "packages/policy": {
+      "name": "@forgebot/policy",
+    },
+    "packages/testing": {
+      "name": "@forgebot/testing",
+    },
+    "packages/types": {
+      "name": "@forgebot/types",
+    },
   },
   "packages": {
+    "@forgebot/config": ["@forgebot/config@workspace:packages/config"],
+
+    "@forgebot/core": ["@forgebot/core@workspace:packages/core"],
+
+    "@forgebot/github": ["@forgebot/github@workspace:packages/github"],
+
     "@forgebot/logger": ["@forgebot/logger@workspace:packages/logger"],
+
+    "@forgebot/policy": ["@forgebot/policy@workspace:packages/policy"],
+
+    "@forgebot/testing": ["@forgebot/testing@workspace:packages/testing"],
+
+    "@forgebot/types": ["@forgebot/types@workspace:packages/types"],
+
+    "@forgebot/worker": ["@forgebot/worker@workspace:apps/worker"],
 
     "@types/bun": ["@types/bun@1.3.14", "", { "dependencies": { "bun-types": "1.3.14" } }, "sha512-h1hFqFVcvAvD9j9K7ZW7vd82aSA+rTdznZa+5bwvCwqSB1jmmfLcbIWhOLx1/+boy/xmjgCs/OMUL8hRJSmnPw=="],
 
@@ -24,7 +57,7 @@
 
     "bun-types": ["bun-types@1.3.14", "", { "dependencies": { "@types/node": "*" } }, "sha512-4N0ig0fEomHt5R0KCFWjovxow98rIoRwKolrYdCcknNwMekCXRnWEUvgu5soYV8QXtVsrUD8B95MBOZGPvr6KQ=="],
 
-    "typescript": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
+    "typescript": ["typescript@6.0.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw=="],
 
     "undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
   }

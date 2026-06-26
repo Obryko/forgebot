@@ -1,7 +1,6 @@
 {
   "name": "forgebot",
   "module": "index.ts",
-  "type": "module",
   "private": true,
   "workspaces": {
     "packages": ["packages/*", "apps/*"],
@@ -9,9 +8,7 @@
     "catalogs": {}
   },
   "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
+    "@types/bun": "latest",
     "typescript": "^6.0.3"
   }
 }
