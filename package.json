@@ -1,5 +1,6 @@
 {
   "name": "forgebot",
+  "type": "module",
   "private": true,
   "workspaces": {
     "packages": ["packages/*", "apps/*"],
@@ -7,6 +8,7 @@
     "catalogs": {}
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.1",
     "@types/bun": "latest",
     "typescript": "^6.0.3"
   }
