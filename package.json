@@ -1,6 +1,5 @@
 {
   "name": "forgebot",
-  "module": "index.ts",
   "private": true,
   "workspaces": {
     "packages": ["packages/*", "apps/*"],
