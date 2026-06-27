@@ -1,5 +1,5 @@
 {
-  "name": "@forgebot/policy",
-  "module": "index.ts",
-  "type": "module"
+	"name": "@forgebot/policy",
+	"module": "index.ts",
+	"type": "module"
 }

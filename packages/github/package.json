@@ -1,5 +1,5 @@
 {
-  "name": "@forgebot/github",
-  "module": "index.ts",
-  "type": "module"
+	"name": "@forgebot/github",
+	"module": "index.ts",
+	"type": "module"
 }

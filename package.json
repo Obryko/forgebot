@@ -2,8 +2,17 @@
   "name": "forgebot",
   "type": "module",
   "private": true,
+  "scripts": {
+    "lint": "biome check --apply",
+    "format": "biome format --write",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
   "workspaces": {
-    "packages": ["packages/*", "apps/*"],
+    "packages": [
+      "packages/*",
+      "apps/*"
+    ],
     "catalog": {},
     "catalogs": {}
   },
