@@ -1,5 +1,20 @@
 {
 	"name": "@forgebot/core",
-	"module": "index.ts",
-	"type": "module"
+	"module": "src/index.ts",
+	"type": "module",
+	"files": [
+		"src"
+	],
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {
+		"lint": "biome check .",
+		"format": "biome format --write .",
+		"test": "bun test",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@forgebot/logger": "workspace:*"
+	}
 }

@@ -1,18 +1,17 @@
 {
-  "name": "@forgebot/logger",
-  "module": "index.ts",
-  "type": "module",
-  "exports": {
-    ".": "./index.ts"
-  },
-  "files": [
-    "index.ts",
-    "src"
-  ],
-  "scripts": {
-    "lint": "biome check --apply",
-    "format": "biome format --write",
-    "test": "bun test",
-    "typecheck": "tsc --noEmit"
-  }
+	"name": "@forgebot/logger",
+	"module": "src/index.ts",
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"files": [
+		"src"
+	],
+	"scripts": {
+		"lint": "biome check .",
+		"format": "biome format --write .",
+		"test": "bun test",
+		"typecheck": "tsc --noEmit"
+	}
 }

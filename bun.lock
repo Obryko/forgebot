@@ -18,6 +18,9 @@
     },
     "packages/core": {
       "name": "@forgebot/core",
+      "dependencies": {
+        "@forgebot/logger": "*",
+      },
     },
     "packages/github": {
       "name": "@forgebot/github",
