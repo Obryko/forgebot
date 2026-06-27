@@ -10,7 +10,7 @@ export type LoggerConfig = {
 
 export const createLogger = (
     config: LoggerConfig,
-    context?: LogContext,
+    context: LogContext = {},
 ): Logger => {
     const level = config.level.toLowerCase();
     assertLogLevel(level);

@@ -17,7 +17,7 @@ describe("Console Logger", () => {
     const context: LogContext = {
         repository: "test-repository",
     };
-    describe("context overides", () => {
+    describe("context overrides", () => {
         const logger = new ConsoleLogger(consoleLike, "debug", context);
         it.each([
             "debug",
