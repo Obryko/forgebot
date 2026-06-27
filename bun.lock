@@ -19,11 +19,14 @@
     "packages/core": {
       "name": "@forgebot/core",
       "dependencies": {
-        "@forgebot/logger": "*",
+        "@forgebot/logger": "workspace:*",
       },
     },
     "packages/github": {
       "name": "@forgebot/github",
+      "dependencies": {
+        "@forgebot/core": "workspace:*",
+      },
     },
     "packages/logger": {
       "name": "@forgebot/logger",
