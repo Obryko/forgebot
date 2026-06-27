@@ -1,7 +1,8 @@
 export type GitHubWebhookEventName =
 	| "pull_request"
 	| "check_suite"
-	| "check_run";
+	| "check_run"
+	| string;
 
 export type GitHubPullRequestAction = "opened" | "synchronize";
 
@@ -21,3 +22,11 @@ export type GitHubWebhookPayload = {
 		id?: number;
 	};
 };
+
+export function isGitHubWebhookEventName(
+	value: string,
+): value is GitHubWebhookEventName {
+	return (
+		value === "pull_request" || value === "check_suite" || value === "check_run"
+	);
+}

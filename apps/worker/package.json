@@ -1,5 +1,21 @@
 {
 	"name": "@forgebot/worker",
-	"module": "index.ts",
-	"type": "module"
+	"private": true,
+	"module": "src/index.ts",
+	"type": "module",
+	"scripts": {
+		"lint": "biome check .",
+		"format": "biome format --write .",
+		"test": "bun test ./src",
+		"test:integration": "bun test ./test/integration",
+		"typecheck": "tsc --noEmit",
+		"dev": "bun run --watch src/index.ts",
+		"start": "bun run src/index.ts"
+	},
+	"dependencies": {
+		"@forgebot/core": "workspace:*",
+		"@forgebot/github": "workspace:*",
+		"@forgebot/logger": "workspace:*",
+		"hono": "^4.12.27"
+	}
 }

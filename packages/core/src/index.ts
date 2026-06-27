@@ -5,4 +5,5 @@ export type {
 	ForgeBotProvider,
 } from "./event.ts";
 export type { ForgeBotPlugin } from "./plugin.ts";
+export { type RunPluginsFn, runPlugins } from "./plugin-runner.ts";
 export type { PluginResult, PluginResultStatus } from "./result.ts";

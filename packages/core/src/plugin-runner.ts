@@ -28,3 +28,5 @@ export async function runPlugins(
 	}
 	return results;
 }
+
+export type RunPluginsFn = typeof runPlugins;
