@@ -8,6 +8,8 @@ pre-commit:
 pre-push:
   parallel: true
   commands:
+    lint:
+      run: bun run lint
     typecheck:
       run: bun run typecheck
     unit-tests:
