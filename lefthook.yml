@@ -1,0 +1,16 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      run: bun run format:staged {staged_files}
+      stage_fixed: true
+
+pre-push:
+  parallel: true
+  commands:
+    typecheck:
+      run: bun run typecheck
+    unit-tests:
+      run: bun run test:unit
+    integration-tests:
+      run: bun run test:integration
