@@ -1,18 +1,12 @@
 import { beforeEach, describe, expect, it, mock } from "bun:test";
-import type { Logger } from "@forgebot/logger";
+import { createMockLogger } from "@forgebot/testing";
 import {
 	type GitHubWebhookInput,
 	GitHubWebhookService,
 } from "./github-webhook.service.ts";
 
 describe("Github Webhook Service", () => {
-	const logger: Logger = {
-		debug: mock(),
-		info: mock(),
-		warn: mock(),
-		error: mock(),
-		child: mock(() => logger),
-	};
+	const logger = createMockLogger();
 
 	const runPlugins = mock();
 

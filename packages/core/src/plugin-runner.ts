@@ -7,18 +7,26 @@ export async function runPlugins(
 	context: ForgeBotContext,
 ): Promise<PluginResult[]> {
 	const results: PluginResult[] = [];
+	const logger = context.logger.child({
+		event: context.event.name,
+		repository: context.event.repository,
+		externalId: context.event.externalId,
+	});
 	for (const plugin of plugins) {
 		if (!plugin.supports(context.event)) {
 			continue;
 		}
+		const pluginLogger = logger.child({
+			plugin: plugin.name,
+		});
 		try {
-			const result = await plugin.run(context);
-			context.logger.info(
-				`Plugin ${plugin.name} executed successfully: ${JSON.stringify(result)}`,
+			const result = await plugin.run({ ...context, logger: pluginLogger });
+			pluginLogger.info(
+				`Plugin executed successfully: ${JSON.stringify(result)}`,
 			);
 			results.push(result);
 		} catch (error) {
-			context.logger.error(`Error executing plugin ${plugin.name}: ${error}`);
+			pluginLogger.error(`Error executing plugin: ${error}`);
 			results.push({
 				pluginName: plugin.name,
 				status: "failed",
@@ -26,6 +34,7 @@ export async function runPlugins(
 			});
 		}
 	}
+	logger.info(`Finished running plugins: ${JSON.stringify(results)}`);
 	return results;
 }
 

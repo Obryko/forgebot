@@ -17,24 +17,28 @@ describe("Console Logger", () => {
 	const context: LogContext = {
 		repository: "test-repository",
 	};
-	describe("context overrides", () => {
-		const logger = new ConsoleLogger(consoleLike, "debug", context);
-		it.each([
-			"debug",
-			"info",
-			"warn",
-			"error",
-		] as LogLevel[])("should override context for %s level", (level: LogLevel) => {
-			const newContext: LogContext = {
-				repository: "new-repository",
-				foo: "bar",
+	describe("context merging", () => {
+		it("should not allow log context to override logger context", () => {
+			const output = {
+				debug: mock(),
+				info: mock(),
+				warn: mock(),
+				error: mock(),
 			};
-			logger[level](`Test message`, newContext);
-			expect(consoleLike[level]).not.toHaveBeenCalledWith(
-				`[${level.toUpperCase()}] Test message ${JSON.stringify(context)}`,
-			);
-			expect(consoleLike[level]).toHaveBeenCalledWith(
-				`[${level.toUpperCase()}] Test message ${JSON.stringify(newContext)}`,
+
+			const logger = new ConsoleLogger(output, "debug", {
+				plugin: "hello",
+				repository: "real/repo",
+			});
+
+			logger.info("message", {
+				plugin: "fake",
+				repository: "fake/repo",
+				custom: "value",
+			});
+
+			expect(output.info).toHaveBeenCalledWith(
+				'[INFO] message {"plugin":"hello","repository":"real/repo","custom":"value"}',
 			);
 		});
 	});
@@ -101,6 +105,32 @@ describe("Console Logger", () => {
 		])("should not log %s messages", (level: LogLevel) => {
 			logger[level]("Test message");
 			expect(consoleLike[level]).not.toHaveBeenCalled();
+		});
+	});
+
+	describe("child logger", () => {
+		it("should not allow child context to override parent context", () => {
+			const output = {
+				debug: mock(),
+				info: mock(),
+				warn: mock(),
+				error: mock(),
+			};
+
+			const logger = new ConsoleLogger(output, "debug", {
+				plugin: "hello",
+			});
+
+			const child = logger.child({
+				plugin: "fake",
+				custom: "value",
+			});
+
+			child.info("message");
+
+			expect(output.info).toHaveBeenCalledWith(
+				'[INFO] message {"plugin":"hello","custom":"value"}',
+			);
 		});
 	});
 });

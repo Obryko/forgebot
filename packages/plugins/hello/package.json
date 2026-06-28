@@ -1,13 +1,14 @@
 {
-	"name": "@forgebot/core",
+	"name": "@forgebot/plugins-hello",
 	"module": "src/index.ts",
+	"private": true,
 	"type": "module",
-	"files": [
-		"src"
-	],
 	"exports": {
 		".": "./src/index.ts"
 	},
+	"files": [
+		"src"
+	],
 	"scripts": {
 		"lint": "biome check .",
 		"format": "biome format --write .",
@@ -15,7 +16,9 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@forgebot/logger": "workspace:*",
+		"@forgebot/core": "workspace:*"
+	},
+	"devDependencies": {
 		"@forgebot/testing": "workspace:*"
 	}
 }

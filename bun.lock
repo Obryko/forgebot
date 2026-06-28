@@ -19,6 +19,9 @@
         "@forgebot/logger": "workspace:*",
         "hono": "^4.12.27",
       },
+      "devDependencies": {
+        "@forgebot/testing": "workspace:*",
+      },
     },
     "packages/config": {
       "name": "@forgebot/config",
@@ -31,6 +34,7 @@
       "name": "@forgebot/core",
       "dependencies": {
         "@forgebot/logger": "workspace:*",
+        "@forgebot/testing": "workspace:*",
       },
     },
     "packages/github": {
@@ -42,8 +46,24 @@
     "packages/logger": {
       "name": "@forgebot/logger",
     },
+    "packages/plugins/hello": {
+      "name": "@forgebot/plugins-hello",
+      "dependencies": {
+        "@forgebot/core": "workspace:*",
+      },
+      "devDependencies": {
+        "@forgebot/testing": "workspace:*",
+      },
+    },
     "packages/policy": {
       "name": "@forgebot/policy",
+    },
+    "packages/testing": {
+      "name": "@forgebot/testing",
+      "dependencies": {
+        "@forgebot/core": "workspace:*",
+        "@forgebot/logger": "workspace:*",
+      },
     },
   },
   "packages": {
@@ -73,7 +93,11 @@
 
     "@forgebot/logger": ["@forgebot/logger@workspace:packages/logger"],
 
+    "@forgebot/plugins-hello": ["@forgebot/plugins-hello@workspace:packages/plugins/hello"],
+
     "@forgebot/policy": ["@forgebot/policy@workspace:packages/policy"],
+
+    "@forgebot/testing": ["@forgebot/testing@workspace:packages/testing"],
 
     "@forgebot/worker": ["@forgebot/worker@workspace:apps/worker"],
 

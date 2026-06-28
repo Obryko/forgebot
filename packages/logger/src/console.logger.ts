@@ -1,3 +1,4 @@
+import { mergeLogContextWithSystemPriority } from "./log-context.ts";
 import { logLevels } from "./log-levels.ts";
 import type { LogContext, Logger, LogLevel } from "./logger.interface.ts";
 
@@ -35,10 +36,11 @@ export class ConsoleLogger implements Logger {
 	}
 
 	child(context: Partial<LogContext>): Logger {
-		return new ConsoleLogger(this.output, this.logLevel, {
-			...this.context,
-			...context,
-		});
+		return new ConsoleLogger(
+			this.output,
+			this.logLevel,
+			mergeLogContextWithSystemPriority(this.context, context),
+		);
 	}
 
 	private log(
@@ -49,7 +51,7 @@ export class ConsoleLogger implements Logger {
 		if (logLevels[level] < logLevels[this.logLevel]) {
 			return;
 		}
-		const logContext = { ...this.context, ...context };
+		const logContext = mergeLogContextWithSystemPriority(this.context, context);
 		const logMessage = `[${level.toUpperCase()}] ${message} ${JSON.stringify(logContext)}`;
 		this.output[level](logMessage);
 	}

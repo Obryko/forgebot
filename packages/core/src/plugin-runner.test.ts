@@ -1,47 +1,25 @@
 import { beforeEach, describe, expect, it, mock } from "bun:test";
 import type { Logger } from "@forgebot/logger";
+import {
+	createMockForgeBotEvent,
+	createMockLogger,
+	createMockPlugin,
+} from "@forgebot/testing";
 import type { ForgeBotEvent } from "./event.ts";
-import type { ForgeBotPlugin } from "./plugin.ts";
 import { runPlugins } from "./plugin-runner.ts";
-import type { PluginResult } from "./result.ts";
-
-type CreatePluginFn = (options: {
-	name: string;
-	supports: boolean;
-	run: () => Promise<PluginResult>;
-}) => ForgeBotPlugin;
-
-const createPlugin: CreatePluginFn = ({ name, supports, run }) => ({
-	name,
-	supports: () => supports,
-	run,
-});
 
 describe("plugin runner", () => {
-	const logger: Logger = {
-		debug: mock(),
-		info: mock(),
-		warn: mock(),
-		error: mock(),
-		child: mock(),
-	};
+	const logger: Logger = createMockLogger();
 
 	beforeEach(() => {
 		mock.clearAllMocks();
 	});
 
-	const event: ForgeBotEvent = {
-		provider: "github",
-		name: "code_change.opened",
-		repository: "test-repo",
-		externalId: "123",
-		payload: {},
-	};
+	const event = createMockForgeBotEvent();
 
 	it("should run plugin", async () => {
-		const plugin = createPlugin({
+		const plugin = createMockPlugin({
 			name: "first",
-			supports: true,
 			run: () =>
 				Promise.resolve({
 					pluginName: "first",
@@ -64,9 +42,9 @@ describe("plugin runner", () => {
 	});
 
 	it("should skip unsupported plugins", async () => {
-		const plugin = createPlugin({
+		const plugin = createMockPlugin({
 			name: "first",
-			supports: false,
+			supports: () => false,
 			run: () =>
 				Promise.resolve({
 					pluginName: "first",
@@ -81,9 +59,8 @@ describe("plugin runner", () => {
 	});
 
 	it("should return failed plugin result", async () => {
-		const plugin = createPlugin({
+		const plugin = createMockPlugin({
 			name: "first",
-			supports: true,
 			run: () => Promise.reject(new Error("Plugin failed")),
 		});
 		const results = await runPlugins([plugin], {
@@ -99,32 +76,29 @@ describe("plugin runner", () => {
 	});
 
 	it("should run multiple plugins in order", async () => {
-		const plugin1 = createPlugin({
+		const plugin1 = createMockPlugin({
 			name: "first",
-			supports: true,
 			run: () =>
 				Promise.resolve({
 					pluginName: "first",
 					status: "success",
 				}),
 		});
-		const plugin2 = createPlugin({
+		const plugin2 = createMockPlugin({
 			name: "second",
-			supports: false,
+			supports: () => false,
 			run: () =>
 				Promise.resolve({
 					pluginName: "second",
 					status: "success",
 				}),
 		});
-		const plugin3 = createPlugin({
+		const plugin3 = createMockPlugin({
 			name: "third",
-			supports: true,
 			run: () => Promise.reject(new Error("Plugin failed")),
 		});
-		const plugin4 = createPlugin({
+		const plugin4 = createMockPlugin({
 			name: "fourth",
-			supports: true,
 			run: () =>
 				Promise.resolve({
 					pluginName: "fourth",
