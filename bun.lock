@@ -40,12 +40,6 @@
     "packages/policy": {
       "name": "@forgebot/policy",
     },
-    "packages/testing": {
-      "name": "@forgebot/testing",
-    },
-    "packages/types": {
-      "name": "@forgebot/types",
-    },
   },
   "packages": {
     "@biomejs/biome": ["@biomejs/biome@2.5.1", "", { "optionalDependencies": { "@biomejs/cli-darwin-arm64": "2.5.1", "@biomejs/cli-darwin-x64": "2.5.1", "@biomejs/cli-linux-arm64": "2.5.1", "@biomejs/cli-linux-arm64-musl": "2.5.1", "@biomejs/cli-linux-x64": "2.5.1", "@biomejs/cli-linux-x64-musl": "2.5.1", "@biomejs/cli-win32-arm64": "2.5.1", "@biomejs/cli-win32-x64": "2.5.1" }, "bin": { "biome": "bin/biome" } }, "sha512-IXWLCxKmae+rI7LOHS1B3EbVisQ6GRAWbhN9msa6KjNCyFWrvKZWR4oUdinaNssrV852OrSHuSPa95h1GPJc7Q=="],
@@ -75,10 +69,6 @@
     "@forgebot/logger": ["@forgebot/logger@workspace:packages/logger"],
 
     "@forgebot/policy": ["@forgebot/policy@workspace:packages/policy"],
-
-    "@forgebot/testing": ["@forgebot/testing@workspace:packages/testing"],
-
-    "@forgebot/types": ["@forgebot/types@workspace:packages/types"],
 
     "@forgebot/worker": ["@forgebot/worker@workspace:apps/worker"],
 
