@@ -10,8 +10,10 @@
 	},
 	"workspaces": {
 		"packages": [
+			"apps/*",
 			"packages/*",
-			"apps/*"
+			"packages/plugins/*",
+			"packages/ai/*"
 		],
 		"catalog": {},
 		"catalogs": {}

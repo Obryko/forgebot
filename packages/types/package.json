@@ -1,5 +1,0 @@
-{
-	"name": "@forgebot/types",
-	"module": "index.ts",
-	"type": "module"
-}
