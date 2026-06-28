@@ -17,6 +17,7 @@
 		"@forgebot/core": "workspace:*",
 		"@forgebot/github": "workspace:*",
 		"@forgebot/logger": "workspace:*",
+		"@forgebot/plugin-hello": "workspace:*",
 		"hono": "^4.12.27"
 	},
 	"devDependencies": {

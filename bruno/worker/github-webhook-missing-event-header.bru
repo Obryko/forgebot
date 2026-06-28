@@ -1,0 +1,33 @@
+meta {
+  name: GitHub Webhook - Missing Event Header
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:3000/webhooks/github
+  body: json
+  auth: none
+}
+
+headers {
+  content-type: application/json
+}
+
+body:json {
+  {
+    "action": "opened",
+    "pull_request": {
+      "number": 1
+    },
+    "repository": {
+      "full_name": "test/repo"
+    }
+  }
+}
+
+tests {
+  test("should return 400", function() {
+    expect(res.status).to.equal(400);
+  });
+}

@@ -1,5 +1,5 @@
 {
-	"name": "@forgebot/plugins-hello",
+	"name": "@forgebot/plugin-hello",
 	"module": "src/index.ts",
 	"private": true,
 	"type": "module",

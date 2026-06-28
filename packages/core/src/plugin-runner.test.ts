@@ -5,7 +5,6 @@ import {
 	createMockLogger,
 	createMockPlugin,
 } from "@forgebot/testing";
-import type { ForgeBotEvent } from "./event.ts";
 import { runPlugins } from "./plugin-runner.ts";
 
 describe("plugin runner", () => {

@@ -17,6 +17,7 @@
         "@forgebot/core": "workspace:*",
         "@forgebot/github": "workspace:*",
         "@forgebot/logger": "workspace:*",
+        "@forgebot/plugin-hello": "workspace:*",
         "hono": "^4.12.27",
       },
       "devDependencies": {
@@ -47,7 +48,7 @@
       "name": "@forgebot/logger",
     },
     "packages/plugins/hello": {
-      "name": "@forgebot/plugins-hello",
+      "name": "@forgebot/plugin-hello",
       "dependencies": {
         "@forgebot/core": "workspace:*",
       },
@@ -93,7 +94,7 @@
 
     "@forgebot/logger": ["@forgebot/logger@workspace:packages/logger"],
 
-    "@forgebot/plugins-hello": ["@forgebot/plugins-hello@workspace:packages/plugins/hello"],
+    "@forgebot/plugin-hello": ["@forgebot/plugin-hello@workspace:packages/plugins/hello"],
 
     "@forgebot/policy": ["@forgebot/policy@workspace:packages/policy"],
 
