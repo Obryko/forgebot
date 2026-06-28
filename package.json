@@ -1,26 +1,28 @@
 {
-	"name": "forgebot",
-	"type": "module",
-	"private": true,
-	"scripts": {
-		"lint": "biome check .",
-		"format": "biome format --write .",
-		"test": "bun test",
-		"typecheck": "tsc --noEmit"
-	},
-	"workspaces": {
-		"packages": [
-			"apps/*",
-			"packages/*",
-			"packages/plugins/*",
-			"packages/ai/*"
-		],
-		"catalog": {},
-		"catalogs": {}
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.5.1",
-		"@types/bun": "latest",
-		"typescript": "^6.0.3"
-	}
+  "name": "forgebot",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "test": "bun run test:unit && bun run test:integration",
+    "test:unit": "bun test ./packages ./apps/*/src",
+    "test:integration": "bun test ./apps/*/test/integration",
+    "typecheck": "tsc --noEmit"
+  },
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*",
+      "packages/plugins/*",
+      "packages/ai/*"
+    ],
+    "catalog": {},
+    "catalogs": {}
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.1",
+    "@types/bun": "latest",
+    "typescript": "^6.0.3"
+  }
 }
