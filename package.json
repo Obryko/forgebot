@@ -4,6 +4,8 @@
 	"private": true,
 	"scripts": {
 		"prepare": "lefthook install",
+		"worker:dev": "bun --filter=@forgebot/worker run dev",
+		"worker:start": "bun --filter=@forgebot/worker run start",
 		"lint": "biome check .",
 		"format": "bun run format:staged .",
 		"format:staged": "biome check --write",

@@ -2,7 +2,7 @@ import { describe, expect, it } from "bun:test";
 import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { ConfigNotFoundError } from "./config-not-found.error.ts";
+import { ConfigNotFoundError } from "./config.error.ts";
 import { loadConfig } from "./load-config.ts";
 
 describe("loadConfig", () => {

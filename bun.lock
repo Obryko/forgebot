@@ -28,6 +28,7 @@
     "packages/config": {
       "name": "@forgebot/config",
       "dependencies": {
+        "@forgebot/logger": "workspace:*",
         "yaml": "^2.9.0",
         "zod": "^4.4.3",
       },

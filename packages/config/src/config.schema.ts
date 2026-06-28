@@ -10,7 +10,7 @@ export const pluginConfigSchema = z
 
 export const forgeBotConfigSchema = z
 	.object({
-		plugins: z.array(pluginConfigSchema).optional().default([]),
+		plugins: z.array(pluginConfigSchema).default([]),
 	})
 	.strict();
 

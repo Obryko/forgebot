@@ -2,7 +2,7 @@ import { serve } from "bun";
 import createApp from "./app.ts";
 import createDependencies from "./dependencies.ts";
 
-const deps = createDependencies();
+const deps = await createDependencies();
 const app = createApp(deps);
 
 serve({
