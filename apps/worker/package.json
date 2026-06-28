@@ -14,6 +14,7 @@
 		"start": "bun run src/index.ts"
 	},
 	"dependencies": {
+		"@forgebot/config": "workspace:*",
 		"@forgebot/core": "workspace:*",
 		"@forgebot/github": "workspace:*",
 		"@forgebot/logger": "workspace:*",

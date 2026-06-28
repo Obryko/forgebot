@@ -10,7 +10,8 @@
 		"test": "bun run test:unit && bun run test:integration",
 		"test:unit": "bun test ./packages ./apps/*/src",
 		"test:integration": "bun test ./apps/*/test/integration",
-		"typecheck": "tsc --noEmit"
+		"typecheck": "tsc --noEmit",
+		"check": "bun run typecheck && bun run test:unit && bun run test:integration && bun run lint"
 	},
 	"workspaces": {
 		"packages": [

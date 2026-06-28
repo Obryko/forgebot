@@ -1,6 +1,7 @@
-import { type ForgeBotPlugin, runPlugins } from "@forgebot/core";
+import { runPlugins } from "@forgebot/core";
 import createLogger from "@forgebot/logger";
-import { createHelloPlugin } from "@forgebot/plugin-hello";
+import { createPluginsFromConfig } from "./plugins/create-plugins-from-config.ts";
+import { pluginRegistry } from "./plugins/plugin-registry.ts";
 import {
 	GitHubWebhookService,
 	type IGitHubWebhookService,
@@ -12,8 +13,17 @@ export default function createDependencies() {
 		type: "console",
 		output: console,
 	});
+	const config = {
+		plugins: [
+			{
+				name: "hello",
+				disabled: false,
+				options: {},
+			},
+		],
+	};
 
-	const plugins: ForgeBotPlugin[] = [createHelloPlugin()];
+	const plugins = createPluginsFromConfig(config, pluginRegistry);
 
 	const gitHubWebhookService: IGitHubWebhookService = new GitHubWebhookService(
 		logger,
