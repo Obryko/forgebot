@@ -8,7 +8,7 @@
 		"worker:start": "bun --filter=@forgebot/worker run start",
 		"lint": "biome check .",
 		"format": "bun run format:staged .",
-		"format:staged": "biome check --write",
+		"format:staged": "biome check --write --no-errors-on-unmatched",
 		"test": "bun run test:unit && bun run test:integration",
 		"test:unit": "bun test ./packages ./apps/*/src",
 		"test:integration": "bun test ./apps/*/test/integration",
