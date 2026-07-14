@@ -8,7 +8,7 @@ import { loadConfig } from "./load-config.ts";
 describe("loadConfig", () => {
 	it("should load config from file", async () => {
 		const directory = await mkdtemp(join(tmpdir(), "forgebot-config-"));
-		const path = join(directory, "forgebot.yml");
+		const path = join(directory, "forgebot.instance.yml");
 
 		try {
 			await writeFile(

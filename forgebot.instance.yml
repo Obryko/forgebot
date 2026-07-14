@@ -1,0 +1,4 @@
+plugins:
+  - name: hello
+    options:
+      message: Hello from forgebot.instance.yml!

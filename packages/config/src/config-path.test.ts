@@ -6,7 +6,7 @@ import { resolveConfigPath } from "./config-path.ts";
 
 describe("resolveConfigPath", () => {
 	it("should return absolute path as-is", async () => {
-		const path = join(tmpdir(), "forgebot.yml");
+		const path = join(tmpdir(), "forgebot.instance.yml");
 
 		const resolvedPath = await resolveConfigPath({
 			path,
@@ -17,7 +17,7 @@ describe("resolveConfigPath", () => {
 
 	it("should find config in base directory", async () => {
 		const directory = await mkdtemp(join(tmpdir(), "forgebot-config-path-"));
-		const configPath = join(directory, "forgebot.yml");
+		const configPath = join(directory, "forgebot.instance.yml");
 
 		try {
 			await writeFile(configPath, "plugins: []", "utf8");
@@ -35,7 +35,7 @@ describe("resolveConfigPath", () => {
 	it("should find config in parent directory", async () => {
 		const directory = await mkdtemp(join(tmpdir(), "forgebot-config-path-"));
 		const nestedDirectory = join(directory, "apps", "worker");
-		const configPath = join(directory, "forgebot.yml");
+		const configPath = join(directory, "forgebot.instance.yml");
 
 		try {
 			await mkdir(nestedDirectory, { recursive: true });
@@ -59,7 +59,7 @@ describe("resolveConfigPath", () => {
 				baseDir: directory,
 			});
 
-			expect(resolvedPath).toBe(resolve(directory, "forgebot.yml"));
+			expect(resolvedPath).toBe(resolve(directory, "forgebot.instance.yml"));
 			expect(isAbsolute(resolvedPath)).toBe(true);
 		} finally {
 			await rm(directory, { recursive: true, force: true });
@@ -87,7 +87,7 @@ describe("resolveConfigPath", () => {
 	it("should prefer explicit path over default path", async () => {
 		const directory = await mkdtemp(join(tmpdir(), "forgebot-config-path-"));
 		const explicitConfigPath = join(directory, "custom.yml");
-		const defaultConfigPath = join(directory, "forgebot.yml");
+		const defaultConfigPath = join(directory, "forgebot.instance.yml");
 
 		try {
 			await writeFile(explicitConfigPath, "plugins: []", "utf8");
@@ -96,7 +96,7 @@ describe("resolveConfigPath", () => {
 			const resolvedPath = await resolveConfigPath({
 				baseDir: directory,
 				path: "custom.yml",
-				defaultPath: "forgebot.yml",
+				defaultPath: "forgebot.instance.yml",
 			});
 
 			expect(resolvedPath).toBe(explicitConfigPath);

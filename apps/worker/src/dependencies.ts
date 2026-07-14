@@ -24,7 +24,7 @@ const DEFAULT_CONFIG: ForgeBotConfig = {
 
 const CONFIG_INPUT = {
 	path: process.env.FORGEBOT_CONFIG_PATH,
-	defaultPath: "forgebot.yml",
+	defaultPath: "forgebot.instance.yml",
 };
 
 async function loadInstanceConfig(logger: Logger): Promise<ForgeBotConfig> {

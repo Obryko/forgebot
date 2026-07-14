@@ -38,7 +38,7 @@ async function findConfigPathUpwards(
 export async function resolveConfigPath(
 	input: ResolveConfigPathInput = {},
 ): Promise<string> {
-	const configPath = input.path ?? input.defaultPath ?? "forgebot.yml";
+	const configPath = input.path ?? input.defaultPath ?? "forgebot.instance.yml";
 
 	if (isAbsolute(configPath)) {
 		return configPath;
