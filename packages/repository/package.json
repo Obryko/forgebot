@@ -1,5 +1,5 @@
 {
-	"name": "@forgebot/policy",
+	"name": "@forgebot/repository",
 	"module": "src/index.ts",
 	"type": "module",
 	"exports": {
